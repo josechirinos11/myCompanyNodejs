@@ -1,0 +1,21 @@
+{
+  "name": "tucompanynodejs",
+  "version": "1.0.0",
+  "description": "software para control de empresa",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./index",
+    "desarrollo": "concurrently \"npm run dev\" \"npm run watch\" ",
+    "start" : "nodemon ./index.js",
+    "watch": "webpack --w --mode development"
+  },
+  "author": "jose chirinos",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3",
+    "express-handlebars": "^7.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
