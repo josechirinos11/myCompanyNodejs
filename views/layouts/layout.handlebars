@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,700,900" rel="stylesheet">
     <link rel="stylesheet" href="/css/trix.css">
     <link rel="stylesheet" href="/css/app.css">
+     <link rel="stylesheet" href="/css/home/home.css">
+     <link rel="stylesheet" href="/css/home/usuario.css">
     <title>{{nombrePagina}}</title>
 
 </head>
@@ -18,35 +20,24 @@
 
     {{#if authenticacion}}
     <div class="container">
-
-
         <h2>
             <span class="orange">My</span>
             <span class="blue">Company</span>
         </h2>
-
-
         <div class="flex justify-center">
             <div class="neumorphism">
-                <a href="/sing-in" class="csslogin">Sign
-                    In</a>
-                <a href="/sing-up" class="csscreate">Create
-                    Account</a>
+                <a href="/iniciar-sesion" class="csslogin">Iniciar Sesion</a>
+                <a href="/crear-cuenta" class="csscreate">Crear Cuenta</a>
             </div>
         </div>
-
-
-
-
-
     </div>
     <div class="footer">Hecho por Jose Chirinos <a href="https://github.com/josechirinos11">Contactame en GitHub</a>
     </div>
     {{else}}
     <!-- Contenido principal -->
-    <div class="contenido-principal contenedor" style="margin-left: 250px;">
+    
         {{{body}}}
-    </div>
+   
     {{/if}}
 
     <!-- Opciones de usuario -->

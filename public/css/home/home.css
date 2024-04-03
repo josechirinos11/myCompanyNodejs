@@ -1,0 +1,103 @@
+.default-form {
+   
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    flex: 1;
+}
+
+.containerInput {
+    background-color: rgb(207, 207, 207);
+    border-radius: 15px;
+    padding: 10px; /* ajusta según tu preferencia */
+    margin-bottom: 20px;
+    width: 100%;
+    color: #6b7280;
+    box-shadow: inset 2px 5px 10px rgba(0, 0, 0, 0.3);
+    border: none; /* Eliminar el borde del input */
+    height: 35px;
+    font-size: 1.1em;
+}
+
+.containerInput:focus {
+    background-color: rgb(255, 255, 255);
+  
+    color: #5e5e60;
+    transform: scale(1.05); /* Escala el tamaño del input al 105% cuando está enfocado */
+    transition: transform 0.2s ease; /* Agrega una transición suave */
+    outline: none; /* Quita el borde al hacer focus */
+    box-shadow: none; /* Quita la sombra al hacer focus */
+   
+}
+
+.contenedorhome {
+  
+    display: block;
+
+   
+    text-align: center;
+    text-decoration: none;
+  
+}
+.botones {
+    display: flex;
+    justify-content: space-evenly
+}
+
+
+
+.botones {
+    display: flex;
+    justify-content: space-evenly; /* o cualquier otra alineación que desees */
+}
+
+.botones a, .botones input[type="submit"] {
+    /* Resetear los estilos */
+    border: none;
+    background: none;
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-button {
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem 1rem;
+    border: 1px solid transparent;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.25rem;
+    height: 20px;
+    border-radius: 50px;
+    color: #4a5568;
+    background-color: rgb(224, 224, 224);
+    transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    text-decoration: none;
+    cursor: pointer;
+    outline: none;
+
+    box-shadow:  20px 20px 60px #5a5a5a,
+             -20px -20px 60px #ffffff;
+}
+.advertencia {
+    background-color: red;
+    color: black;
+    font-size: smaller; /* Letras más pequeñas */
+   
+    padding: 1px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espaciado externo inferior */
+    border: none;
+    border-radius: 20px;
+  box-shadow:  20px 20px 60px #5a5a5a,
+               -20px -20px 60px #ffffff;
+}
+.mensaje-error {
+    color: black;
+}

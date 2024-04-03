@@ -1,2 +1,129 @@
+<div class="container">
+    <h2>
+        <span class="orange">{{titulo1}}</span>
+        <span class="blue">{{titulo2}}</span>
+    </h2>
+    <div class="contenedorhome">
+        {{#if error}}
+        <div class="advertencia">
+            <p class="mensaje-error">{{error}}</p>
+        </div>
+        {{/if}}
+        <form id="miFormulario" method="POST" class="default-form" action="{{accion}}">
+            <div>
+                <input type="email" name="email" placeholder="Tu E-Mail" class="containerInput" value="leon@leon">
+            </div>
+            <div>
+                <input type="password" name="password" placeholder="Tu Password" class="containerInput" value="123456">
+            </div>
+            <div class="botones">
+                <div class="custom-button">
+                    <a class="custom-transformacion" href="/{{home}}">Atras</a>
+                </div>
+                <div class="custom-button">
+                    <input class="custom-transformacion" type="submit" value="Crear" class="" id="botonCrear">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="footer">Hecho por Jose Chirinos <a href="https://github.com/josechirinos11">Contactame en GitHub</a>
+</div>
+<script>
+    const handleSubmit = async (event) => {
 
-    <h2>Desde home</h2>
+
+
+        event.preventDefault();
+
+
+        const pathname = window.location.pathname; // Obtiene la ruta de la URL actual
+
+        let mutation;
+
+        if (pathname === '/crear-cuenta') {
+            mutation = `
+        mutation CrearUsuario($input: UsuarioInput!) {
+            crearUsuario(input: $input) {
+    token
+   mensaje
+  }
+}
+    `;
+        } else if (pathname === '/iniciar-sesion') {
+            mutation = `
+        mutation AutenticarUsuario($input: AutenticarInput) {
+            autenticarUsuario(input: $input) {
+                token
+            }
+        } 
+    `;
+        }
+
+
+
+
+
+        const email = document.querySelector('input[name="email"]').value;
+        const password = document.querySelector('input[name="password"]').value;
+
+
+
+        const variables = { input: { email, password } };
+
+        console.log(mutation);
+        console.log(variables);
+        console.log(email);
+        console.log(password);
+
+        try {
+            const response = await fetch('http://localhost:4000/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ query: mutation, variables })
+            });
+
+            const data = await response.json();
+            console.log(data);
+            //   console.log(data.data.autenticarUsuario.token);
+            let mensaje = null;
+            let error = null;
+            let token = null;
+
+
+             
+            if (data.data.crearUsuario && data.data.crearUsuario.token) {
+                token = data.data.crearUsuario.token;
+                window.location.href = '/usuario';
+            }
+             if (data.errors && data.errors.length > 0) {
+                error = data.errors[0].message;
+            } 
+            if (data.data.autenticarUsuario && data.data.autenticarUsuario.token) {
+                token = data.data.autenticarUsuario.token;
+                window.location.href = '/usuario';
+            }
+        
+
+            console.log("Error:", error);
+            console.log("Mensaje:", mensaje);
+            console.log("token:", token);
+
+      if (error === 'El  usuario ya esta registrado') {
+                    window.location.href = '/crear-cuenta?error=' + encodeURIComponent(error);
+                } else {
+                    if (error === 'El Usuario no existe') {
+                        window.location.href = '/iniciar-sesion?error=' + encodeURIComponent(error);
+                    }
+                }
+        } catch (error) {
+            console.error('Error al enviar la mutación GraphQL:', error);
+
+
+        }
+    }
+
+    document.getElementById('miFormulario').addEventListener('submit', handleSubmit);
+</script>

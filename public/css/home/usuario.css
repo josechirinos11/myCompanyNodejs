@@ -1,0 +1,31 @@
+.containerPagina {
+    display: flex;
+    flex-direction: column; /* Apila los elementos verticalmente */
+    height: 100vh; /* El 100% de la altura del viewport */
+    background-color: #f0f0f0; /* Color de fondo para el contenedor */
+    width: 100vw;
+}
+
+.cabecera {
+    height: 50px; /* Altura de la cabecera */
+    flex-grow: 0; /* No crecerá en altura */
+    width: 100%; /* Ocupará todo el ancho posible */
+    background-color: #333; /* Color de fondo para la cabecera */
+    color: #fff; /* Color del texto */
+}
+
+.contenidoUsuario {
+    display: flex; /* Utilizamos flexbox para el contenido */
+    flex-grow: 1; /* El contenido ocupará todo el espacio restante */
+}
+
+.menu {
+    width: 200px; /* Ancho del menú */
+    flex-grow: 0; /* No crecerá en anchura */
+    background-color: #ccc; /* Color de fondo para el menú */
+}
+
+.cuerpo {
+    flex-grow: 1; /* Ocupará todo el espacio restante */
+    background-color: #fff; /* Color de fondo para el cuerpo */
+}
